@@ -1,5 +1,4 @@
 # 基本ライブラリ
-
 import streamlit as st
 import numpy as np
 import pandas as pd
@@ -37,10 +36,8 @@ st.title('Iris Classifier')
 st.write('## Input Value')
 
 # インプットデータ（1行のデータフレーム）
-value_df = pd.DataFrame([],columns=['data','sepal length (cm)','petal length (cm)'])
-record = pd.Series(['data',sepalValue, petalValue], index=value_df.columns)
-value_df = value_df.append(record, ignore_index=True)
-value_df.set_index('data',inplace=True)
+value_df = pd.DataFrame({'data':'data', 'sepal length (cm)':sepalValue, 'petal length (cm)':petalValue}, index=[0])
+value_df.set_index('data', inplace=True)
 
 # 入力値の値
 st.write(value_df)
@@ -56,4 +53,3 @@ st.write(pred_df)
 name = pred_df.idxmax(axis=1).tolist()
 st.write('## Result')
 st.write('このアイリスはきっと',str(name[0]),'です!')
-
